@@ -36,7 +36,7 @@ public class SimpleNIONonBlockingSelectorServer {
                         sc.register(selector, SelectionKey.OP_READ);
                     } else if (key.isReadable()) {
                         SocketChannel client = (SocketChannel) key.channel();
-                        ByteBuffer buffer = ByteBuffer.allocate(256);
+                        ByteBuffer buffer = ByteBuffer.allocate(1024);
                         client.read(buffer);
                         String output = new String(buffer.array()).trim();
                         System.out.println("Message read from client: " + output);
